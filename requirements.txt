@@ -1,0 +1,10 @@
+flask_admin
+flask_login
+flask
+flask_restful
+sqlalchemy
+flask_wtf
+wtforms
+PyQt5
+requests
+werkzeug
