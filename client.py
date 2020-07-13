@@ -1,8 +1,10 @@
-import sys
+import sys, PyQt5
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QTableWidgetItem, QMessageBox
 from requests import get, post, put, delete
+from multiprocessing import Queue
 from werkzeug.security import generate_password_hash, check_password_hash
 import time
 
@@ -25,6 +27,7 @@ class RegisterWindow(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('data/ui/Register.ui', self)
+        self.setWindowIcon(QIcon('data/img/icon.ico'))
 
         self.RegButton.clicked.connect(self.reg)
         self.return_home_Button.clicked.connect(self.go_back)
@@ -80,6 +83,7 @@ class LoginWindow(QWidget):
         self.LoginButton.clicked.connect(self.login)
         self.return_home_Button.clicked.connect(self.go_back)
         self.remember = False
+        self.setWindowIcon(QIcon('data/img/icon.ico'))
 
     def login(self):
         """Функция входа в программу. Она получает пользователя из get-запроса и проверяет
@@ -129,6 +133,7 @@ class PreviewWindow(QWidget):
         uic.loadUi('data/ui/PreviewRegisterWindow.ui', self)
         self.RegButton.clicked.connect(self.open_reg_form)
         self.LoginButton.clicked.connect(self.open_login_form)
+        self.setWindowIcon(QIcon('data/img/icon.ico'))
 
         txt = open('data/settings.txt', 'r').read().split('\n')
         if str(txt[0]) != "'":
@@ -160,6 +165,7 @@ class MainWindow(QMainWindow):
         self.settings = open('data/settings.txt', 'r').read().split('\n')
         uic.loadUi('data/ui/client.ui', self)
         task_id = int(self.settings[-1])
+        self.setWindowIcon(QIcon('data/img/icon.ico'))
 
         current_task = get(f'https://mathbattlesite.herokuapp.com/api/task/{self.settings[-1]}')
 
@@ -507,6 +513,7 @@ class DeveloperClient(QWidget):
         uic.loadUi('data/ui/developer_client.ui', self)
         self.settings = open('data/settings.txt', 'r').read().split('\n')
         self.tasks_list = get("https://mathbattlesite.herokuapp.com/api/tasks/'").json()['tasks']
+        self.setWindowIcon(QIcon('data/img/icon.ico'))
         self.Nickname_small.setText(USER['nickname'])
 
         self.del_task_button.clicked.connect(self.del_task)
