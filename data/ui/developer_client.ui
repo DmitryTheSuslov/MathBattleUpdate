@@ -526,7 +526,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QTableWidget" name="tableWidget_2">
+      <widget class="QTableWidget" name="tableWidget">
        <property name="styleSheet">
         <string notr="true">background-color: rgba(1, 173, 188, 25);
 color: rgb(255, 255, 255);</string>

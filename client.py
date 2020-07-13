@@ -100,7 +100,7 @@ class LoginWindow(QWidget):
                     self.settings.write('\n'.join(txt))
                     self.settings.close()
 
-                self.main_form = MainWindow() if USER['status'] != 'Разработчик' else DeveloperClient()
+                self.main_form = MainWindow() if USER['status'] != 'developer' else DeveloperClient()
                 self.main_form.show()
                 self.close()
             else:
@@ -135,7 +135,7 @@ class PreviewWindow(QWidget):
             USER = get(f'https://mathbattlesite.herokuapp.com/api/users/{txt[0]}').json()
             print(USER['status'])
             print(1)
-            self.open_form = MainWindow() if USER['status'] != 'Разработчик' else DeveloperClient()
+            self.open_form = MainWindow() if USER['status'] != 'developer' else DeveloperClient()
         else:
             self.open_form = LoginWindow()
 
@@ -480,7 +480,7 @@ class MainWindow(QMainWindow):
             self.error_label.setText('Все поля должны быть заполнены')
             return
 
-        post(f'https://mathbattlesite.herokuapp.com/api/tasks/{current_task["user_login"]}', json=dct)
+        post(f'https://mathbattlesite.herokuapp.com/api/tasks/{USER["login"]}', json=dct)
         lst_tasks = get(f'https://mathbattlesite.herokuapp.com/api/tasks/{USER["login"]}').json()['tasks']
         self.error_label.setStyleSheet('color: rgb(0, 200, 0);')
         self.error_label.setText(f'Задача успешно добавлена! ID задачи: {max([task["id"] for task in lst_tasks])}')
@@ -611,7 +611,7 @@ class DeveloperClient(QWidget):
             self.error_label.setText('Все поля должны быть заполнены')
             return
 
-        post(f'https://mathbattlesite.herokuapp.com/api/tasks/{current_task["user_login"]}', json=dct)
+        post(f'https://mathbattlesite.herokuapp.com/api/tasks/{USER["login"]}', json=dct)
         lst_tasks = get(f'https://mathbattlesite.herokuapp.com/api/tasks/{USER["login"]}').json()['tasks']
         self.error_label.setStyleSheet('color: rgb(0, 200, 0);')
         self.error_label.setText(f'Задача успешно добавлена! ID задачи: {max([task["id"] for task in lst_tasks])}')
