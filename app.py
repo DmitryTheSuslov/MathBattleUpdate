@@ -15,7 +15,8 @@ def main():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('MathBattleMainPage.html', style_way=url_for('static', filename='css/styles.css'))
+    return render_template('MathBattleMainPage.html', style_way=url_for('static', filename='css/styles.css'),
+                           file_way=url_for('static', filename='MathBattleDist.rar'))
 
 
 if __name__ == '__main__':
