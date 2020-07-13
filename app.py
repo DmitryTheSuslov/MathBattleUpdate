@@ -9,8 +9,8 @@ app = Flask(__name__)
 
 
 def main():
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    # port = int(os.environ.get("PORT", 5000))
+    app.run(host='127.0.0.1', port=5000)
 
 
 @app.route('/', methods=['GET', 'POST'])
