@@ -133,8 +133,6 @@ class PreviewWindow(QWidget):
         txt = open('data/settings.txt', 'r').read().split('\n')
         if str(txt[0]) != "'":
             USER = get(f'http://127.0.0.1:5000/api/users/{txt[0]}').json()
-            print(USER['status'])
-            print(1)
             self.open_form = MainWindow() if USER['status'] != 'developer' else DeveloperClient()
         else:
             self.open_form = LoginWindow()
@@ -326,7 +324,7 @@ class MainWindow(QMainWindow):
 
         self.decidedTasks.setItem(last_section, 2, QTableWidgetItem("+" + str(current_task['points'])))
         self.decidedTasks.item(last_section, 2).setFlags(self.decidedTasks.item(last_section, 2).flags() ^ Qt.ItemIsEditable)
-        USER = get(f'http://127.0.0.1:5000/api/users/{self.create_Email_lineEdit.text()}').json()
+        USER = get(f'http://127.0.0.1:5000/api/users/{USER["login"]}').json()
 
     def update_profile(self):
         """Функция обновления профиля"""
@@ -352,18 +350,18 @@ class MainWindow(QMainWindow):
         """Фунуция получает следующую по id задачу. Если id существует,
            то обновляется current_task, иначе происходит рекурсия."""
         global current_task, task_id
-        print(1)
+
         max_id = get("http://127.0.0.1:5000/api/task/0").json()['count']
-        print(2)
+
         decided_tasks = USER['decided_tasks'].split('%')
         if (len(set(decided_tasks)) - 2) != max_id:
             if task_id == max_id:
                 task_id = 1
             else:
                 task_id += 1
-            print(1)
+
             possible_task = get(f'http://127.0.0.1:5000/api/task/{task_id}')
-            print(2)
+
             if possible_task:
                 current_task = possible_task.json()
                 self.post_task()
@@ -402,7 +400,7 @@ class MainWindow(QMainWindow):
                 valid = QMessageBox.warning(self, 'Предупреждение',
                                              "Вы уже отправили жалобу на задачу!",
                                              QMessageBox.Cancel)
-        USER = get(f'http://127.0.0.1:5000/api/users/{self.create_Email_lineEdit.text()}').json()
+        USER = get(f'http://127.0.0.1:5000/api/users/{USER["login"]}').json()
 
     def check_answer(self):
         """Функция проверяет ответ пользователя с правильным ответом. Если ответ правильный,
@@ -414,7 +412,6 @@ class MainWindow(QMainWindow):
         if str(current_task["user_login"]) != USER["login"]:
             if str(current_task["id"]) not in decided_tasks:
                 try:
-                    print(float(self.lineAnswer.text()), current_task['answer'])
                     if float(self.lineAnswer.text()) == float(current_task['answer']):
                         self.labelAnswStatus.setText('✓')
                         self.labelAnswStatus.setToolTip('Статус: зачтено')
