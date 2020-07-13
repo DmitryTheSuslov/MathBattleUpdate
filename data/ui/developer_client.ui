@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1026</width>
-    <height>670</height>
+    <width>1069</width>
+    <height>704</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1026</width>
-    <height>670</height>
+    <width>1069</width>
+    <height>704</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1026</width>
-    <height>670</height>
+    <width>1069</width>
+    <height>704</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,151 +28,11 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(13, 86, 166);</string>
   </property>
-  <widget class="QLabel" name="labelStatus">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>821</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-  </widget>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>821</width>
-     <height>621</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgba(1, 173, 188, 25);
-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="verticalScrollMode">
-    <enum>QAbstractItemView::ScrollPerPixel</enum>
-   </property>
-   <property name="horizontalScrollMode">
-    <enum>QAbstractItemView::ScrollPerPixel</enum>
-   </property>
-   <attribute name="horizontalHeaderCascadingSectionResizes">
-    <bool>true</bool>
-   </attribute>
-   <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>220</number>
-   </attribute>
-   <attribute name="horizontalHeaderHighlightSections">
-    <bool>false</bool>
-   </attribute>
-   <attribute name="verticalHeaderVisible">
-    <bool>false</bool>
-   </attribute>
-   <attribute name="verticalHeaderHighlightSections">
-    <bool>false</bool>
-   </attribute>
-   <column>
-    <property name="text">
-     <string>ID</string>
-    </property>
-    <property name="foreground">
-     <brush brushstyle="SolidPattern">
-      <color alpha="255">
-       <red>13</red>
-       <green>86</green>
-       <blue>166</blue>
-      </color>
-     </brush>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Название задачи</string>
-    </property>
-    <property name="foreground">
-     <brush brushstyle="SolidPattern">
-      <color alpha="255">
-       <red>13</red>
-       <green>86</green>
-       <blue>166</blue>
-      </color>
-     </brush>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Условие</string>
-    </property>
-    <property name="foreground">
-     <brush brushstyle="SolidPattern">
-      <color alpha="255">
-       <red>13</red>
-       <green>86</green>
-       <blue>166</blue>
-      </color>
-     </brush>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Ответ</string>
-    </property>
-    <property name="foreground">
-     <brush brushstyle="SolidPattern">
-      <color alpha="255">
-       <red>13</red>
-       <green>86</green>
-       <blue>166</blue>
-      </color>
-     </brush>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Логин пользователя</string>
-    </property>
-    <property name="foreground">
-     <brush brushstyle="SolidPattern">
-      <color alpha="255">
-       <red>13</red>
-       <green>86</green>
-       <blue>166</blue>
-      </color>
-     </brush>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Кол-во репортов</string>
-    </property>
-    <property name="foreground">
-     <brush brushstyle="SolidPattern">
-      <color alpha="255">
-       <red>13</red>
-       <green>86</green>
-       <blue>166</blue>
-      </color>
-     </brush>
-    </property>
-   </column>
-  </widget>
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
     <rect>
-     <x>840</x>
-     <y>40</y>
+     <x>876</x>
+     <y>30</y>
      <width>181</width>
      <height>71</height>
     </rect>
@@ -316,8 +176,8 @@ border-radius: 5px;  </string>
   <widget class="QPushButton" name="ButtonExit">
    <property name="geometry">
     <rect>
-     <x>854</x>
-     <y>635</y>
+     <x>890</x>
+     <y>660</y>
      <width>162</width>
      <height>25</height>
     </rect>
@@ -366,8 +226,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="Nickname_small">
    <property name="geometry">
     <rect>
-     <x>854</x>
-     <y>604</y>
+     <x>890</x>
+     <y>629</y>
      <width>162</width>
      <height>25</height>
     </rect>
@@ -408,11 +268,16 @@ border-radius: 5px;</string>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>840</x>
-     <y>120</y>
+     <x>876</x>
+     <y>110</y>
      <width>181</width>
      <height>101</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QGroupBox {
@@ -434,6 +299,55 @@ border-radius: 5px;</string>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="3" column="0">
+      <widget class="QPushButton" name="del_user_button">
+       <property name="minimumSize">
+        <size>
+         <width>77</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>7</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	color: rgb(255, 255, 255);
+border: 1px solid black;	
+border-radius: 5px;
+background-color: rgb(255, 154, 0);
+gridline-color: rgb(166, 100, 0);
+}
+
+QPushButton:hover {
+	background-color: rgb(255, 174, 10);
+}
+
+QPushButton:pressed {
+	background-color: rgb(225, 124, 0);
+}</string>
+       </property>
+       <property name="text">
+        <string>Удалить user'a</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../../Антон/Desktop/data/img/del_user.jpg</normaloff>../../../../../Антон/Desktop/data/img/del_user.jpg</iconset>
+       </property>
+      </widget>
+     </item>
      <item row="3" column="1">
       <widget class="QPushButton" name="update_tasks_button">
        <property name="minimumSize">
@@ -475,104 +389,6 @@ QPushButton:pressed {
        <property name="icon">
         <iconset>
          <normaloff>../../../../../Антон/Desktop/data/img/update.jpg</normaloff>../../../../../Антон/Desktop/data/img/update.jpg</iconset>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QPushButton" name="del_user_button">
-       <property name="minimumSize">
-        <size>
-         <width>77</width>
-         <height>35</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>75</width>
-         <height>35</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Shell Dlg 2</family>
-         <pointsize>7</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-	color: rgb(255, 255, 255);
-	font: 75 7pt &quot;MS Shell Dlg 2&quot;;
-border: 1px solid black;	
-border-radius: 5px;
-background-color: rgb(255, 154, 0);
-gridline-color: rgb(166, 100, 0);
-}
-
-QPushButton:hover {
-	background-color: rgb(255, 174, 10);
-}
-
-QPushButton:pressed {
-	background-color: rgb(225, 124, 0);
-}</string>
-       </property>
-       <property name="text">
-        <string>Удалить user'a</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../../../../../Антон/Desktop/data/img/del_user.jpg</normaloff>../../../../../Антон/Desktop/data/img/del_user.jpg</iconset>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="open_user_tasks_button">
-       <property name="minimumSize">
-        <size>
-         <width>77</width>
-         <height>35</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>75</width>
-         <height>35</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Shell Dlg 2</family>
-         <pointsize>8</pointsize>
-         <weight>50</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-	font: 8pt &quot;MS Shell Dlg 2&quot;;
-	border: 1px solid black;
-	color: rgb(255, 255, 255);
-	background-color: rgb(81, 144, 226);
-	border-radius: 5px;
-}
-QPushButton:hover {
-	background-color: rgb(96, 159, 241);
-}
-
-QPushButton:pressed {
-	background-color:  rgb(13, 86, 166);
-}</string>
-       </property>
-       <property name="text">
-        <string>Задачи user'а</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../../../../../Антон/Desktop/data/img/user.jpg</normaloff>../../../../../Антон/Desktop/data/img/user.jpg</iconset>
        </property>
       </widget>
      </item>
@@ -626,7 +442,475 @@ QPushButton:pressed {
        </property>
       </widget>
      </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="open_user_tasks_button">
+       <property name="minimumSize">
+        <size>
+         <width>77</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>8</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	font: 8pt &quot;MS Shell Dlg 2&quot;;
+	border: 1px solid black;
+	color: rgb(255, 255, 255);
+	background-color: rgb(81, 144, 226);
+	border-radius: 5px;
+}
+QPushButton:hover {
+	background-color: rgb(96, 159, 241);
+}
+
+QPushButton:pressed {
+	background-color:  rgb(13, 86, 166);
+}</string>
+       </property>
+       <property name="text">
+        <string>Задачи user'а</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../../../../../Антон/Desktop/data/img/user.jpg</normaloff>../../../../../Антон/Desktop/data/img/user.jpg</iconset>
+       </property>
+      </widget>
+     </item>
     </layout>
+   </widget>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>851</width>
+     <height>661</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab_1">
+    <attribute name="title">
+     <string>Главная</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelStatus">
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QTableWidget" name="tableWidget_2">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgba(1, 173, 188, 25);
+color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="horizontalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <attribute name="horizontalHeaderCascadingSectionResizes">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>220</number>
+       </attribute>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>ID</string>
+        </property>
+        <property name="foreground">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>13</red>
+           <green>86</green>
+           <blue>166</blue>
+          </color>
+         </brush>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Название задачи</string>
+        </property>
+        <property name="foreground">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>13</red>
+           <green>86</green>
+           <blue>166</blue>
+          </color>
+         </brush>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Условие</string>
+        </property>
+        <property name="foreground">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>13</red>
+           <green>86</green>
+           <blue>166</blue>
+          </color>
+         </brush>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Ответ</string>
+        </property>
+        <property name="foreground">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>13</red>
+           <green>86</green>
+           <blue>166</blue>
+          </color>
+         </brush>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Логин пользователя</string>
+        </property>
+        <property name="foreground">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>13</red>
+           <green>86</green>
+           <blue>166</blue>
+          </color>
+         </brush>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Кол-во репортов</string>
+        </property>
+        <property name="foreground">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>13</red>
+           <green>86</green>
+           <blue>166</blue>
+          </color>
+         </brush>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="tab_4">
+    <attribute name="title">
+     <string>Добавить задачу</string>
+    </attribute>
+    <widget class="QPlainTextEdit" name="task_text_TextEdit">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>70</y>
+       <width>645</width>
+       <height>339</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="plainText">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>40</y>
+       <width>141</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Уровень сложности:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>10</y>
+       <width>141</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Название:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="title_lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>10</y>
+       <width>645</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="answer_lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>415</y>
+       <width>645</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="add_task_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>704</x>
+       <y>597</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	border: 1px solid black;
+	color: rgb(255, 255, 255);
+	background-color:  rgb(39, 79, 125);
+	border-radius: 5px;
+}
+QPushButton:hover {
+	background-color: rgb(13, 86, 166);
+}
+
+QPushButton:pressed {
+	background-color:  rgb(24, 50, 79);
+}</string>
+     </property>
+     <property name="text">
+      <string>Добавить</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>415</y>
+       <width>141</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Ответ:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>70</y>
+       <width>141</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Текст задачи:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="error_label">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>600</y>
+       <width>511</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 154, 0);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="difficult_lvl_comboBox">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>40</y>
+       <width>70</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>A</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>B</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>C</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>D</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F</string>
+      </property>
+     </item>
+    </widget>
    </widget>
   </widget>
  </widget>

@@ -515,6 +515,8 @@ class DeveloperClient(QWidget):
         self.update_tasks_button.clicked.connect(self.get_reported_tasks)
         self.ButtonExit.clicked.connect(self.exit_from_account)
 
+        self.add_task_pushButton.clicked.connect(self.add_task)
+
         self.get_reported_tasks()
 
     def get_reported_tasks(self):
@@ -588,6 +590,31 @@ class DeveloperClient(QWidget):
             self.tableWidget.item(j, 5).setFlags(self.tableWidget.item(j, 5).flags() ^ Qt.ItemIsEditable)
 
         self.tableWidget.resizeColumnsToContents()
+
+    def add_task(self):
+        """Разработчик может добавлять задачи.
+           Если дан числовой ответ и все строки заполненны, то задача добавляется в базу данных."""
+        dct = {'name': self.title_lineEdit.text(), 'user_login': USER['login'],
+               'points': int(task_diff[self.difficult_lvl_comboBox.currentText()]),
+               'content': self.task_text_TextEdit.toPlainText(), 'answer': self.answer_lineEdit.text()}
+        try:
+            if not (self.title_lineEdit.text() and
+                    self.task_text_TextEdit.toPlainText() and self.answer_lineEdit.text()):
+                raise NameError()
+            dct['answer'] = float(dct['answer'])
+        except ValueError:
+            self.error_label.setStyleSheet('color: rgb(255, 154, 0);')
+            self.error_label.setText('Некорректный ответ (ответ должен быть представлен числом)')
+            return
+        except NameError:
+            self.error_label.setStyleSheet('color: rgb(255, 154, 0);')
+            self.error_label.setText('Все поля должны быть заполнены')
+            return
+
+        post(f'https://mathbattlesite.herokuapp.com/api/tasks/{current_task["user_login"]}', json=dct)
+        lst_tasks = get(f'https://mathbattlesite.herokuapp.com/api/tasks/{USER["login"]}').json()['tasks']
+        self.error_label.setStyleSheet('color: rgb(0, 200, 0);')
+        self.error_label.setText(f'Задача успешно добавлена! ID задачи: {max([task["id"] for task in lst_tasks])}')
 
     def exit_from_account(self):
         valid = QMessageBox.question(self, 'Предупреждение',
