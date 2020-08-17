@@ -1,4 +1,3 @@
-import parser
 from flask_restful import reqparse, abort, Api, Resource
 
 from flask import Flask, Blueprint, jsonify, request
@@ -80,6 +79,7 @@ class TaskListResource(Resource):
         )
         session.add(task)
         session.commit()
+        session.close()
         return jsonify({'success': 'OK'})
 
     def delete(self, user_login):
