@@ -13,15 +13,8 @@ def main():
     app.run(host='0.0.0.0', port=port)
 
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    return render_template('MathBattleMainPage.html', style_way=url_for('static', filename='css/styles.css'),
-                           file_way=url_for('static', filename='MathBattle.rar'))
-
-
 if __name__ == '__main__':
     from api import *
-
 
     session = db_session.create_session()
     api.add_resource(users_resource.UserResource, '/api/users/<user_login>')
