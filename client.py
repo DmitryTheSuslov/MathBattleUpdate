@@ -38,15 +38,15 @@ class RegisterWindow(QWidget):
             if self.create_Nickname_lineEdit.text() and self.create_Email_lineEdit.text() and \
                     self.create_Password_lineEdit.text():
                 if self.create_Email_lineEdit.text() != "'":
-                    if not get(f'http://127.0.0.1:5000/api/users/{self.create_Email_lineEdit.text()}'):
+                    if not get(f'https://mathbattlesite.herokuapp.com/api/users/{self.create_Email_lineEdit.text()}'):
                         user = dict()
                         user['nickname'] = self.create_Nickname_lineEdit.text()
                         user['login'] = self.create_Email_lineEdit.text()
                         user['hashed_password'] = set_password(self.create_Password_lineEdit.text())
                         user['birthday'] = str(self.dateEdit.text())
                         user['status'] = 'student'
-                        post('http://127.0.0.1:5000/api/user', json=user)
-                        USER = get(f'http://127.0.0.1:5000/api/users/{self.create_Email_lineEdit.text()}').json()
+                        post('https://mathbattlesite.herokuapp.com/api/user', json=user)
+                        USER = get(f'https://mathbattlesite.herokuapp.com/api/users/{self.create_Email_lineEdit.text()}').json()
 
                         self.open_form = MainWindow()
                         self.open_form.show()
@@ -89,7 +89,7 @@ class LoginWindow(QWidget):
            Далее открывается нужная форма в связи со статусом пользователя."""
         global USER
         try:
-            USER = get(f'http://127.0.0.1:5000/api/users/{self.login_lineEdit.text()}').json()
+            USER = get(f'https://mathbattlesite.herokuapp.com/api/users/{self.login_lineEdit.text()}').json()
             if check_password_hash(USER['hashed_password'], self.password_lineEdit.text()):
                 if self.remember:
                     txt = open('data/settings.txt', 'r').read().split('\n')
@@ -132,7 +132,7 @@ class PreviewWindow(QWidget):
 
         txt = open('data/settings.txt', 'r').read().split('\n')
         if str(txt[0]) != "'":
-            USER = get(f'http://127.0.0.1:5000/api/users/{txt[0]}').json()
+            USER = get(f'https://mathbattlesite.herokuapp.com/api/users/{txt[0]}').json()
             self.open_form = MainWindow() if USER['status'] != 'developer' else DeveloperClient()
         else:
             self.open_form = LoginWindow()
@@ -159,7 +159,7 @@ class MainWindow(QMainWindow):
         uic.loadUi('data/ui/client.ui', self)
         task_id = int(self.settings[-1])
 
-        current_task = get(f'http://127.0.0.1:5000/api/task/{self.settings[-1]}')
+        current_task = get(f'https://mathbattlesite.herokuapp.com/api/task/{self.settings[-1]}')
 
         if current_task:
             current_task = current_task.json()
@@ -172,7 +172,7 @@ class MainWindow(QMainWindow):
         n_tasks = USER['decided_tasks'].split('%')[2:]
         i = 0
         for j in n_tasks:
-            task = get(f'http://127.0.0.1:5000/api/task/{j}')
+            task = get(f'https://mathbattlesite.herokuapp.com/api/task/{j}')
             if task:
                 self.decidedTasks.setRowCount(i + 1)
                 task = task.json()
@@ -283,7 +283,7 @@ class MainWindow(QMainWindow):
         global current_task
         text = self.lineSearch.text()
         try:
-            current_task = get(f'http://127.0.0.1:5000/api/task/{int(text)}').json()
+            current_task = get(f'https://mathbattlesite.herokuapp.com/api/task/{int(text)}').json()
             self.post_task()
         except:
             pass
@@ -324,13 +324,13 @@ class MainWindow(QMainWindow):
 
         self.decidedTasks.setItem(last_section, 2, QTableWidgetItem("+" + str(current_task['points'])))
         self.decidedTasks.item(last_section, 2).setFlags(self.decidedTasks.item(last_section, 2).flags() ^ Qt.ItemIsEditable)
-        USER = get(f'http://127.0.0.1:5000/api/users/{USER["login"]}').json()
+        USER = get(f'https://mathbattlesite.herokuapp.com/api/users/{USER["login"]}').json()
 
     def update_profile(self):
         """Функция обновления профиля"""
         global USER
 
-        USER = get(f'http://127.0.0.1:5000/api/users/{USER["login"]}').json()
+        USER = get(f'https://mathbattlesite.herokuapp.com/api/users/{USER["login"]}').json()
         self.labelCalcNums.setText(self.nice_view(self.number_board))
         self.Nickname.setText(USER['nickname'])
         self.Nickname_small.setText(USER['nickname'])
@@ -351,7 +351,7 @@ class MainWindow(QMainWindow):
            то обновляется current_task, иначе происходит рекурсия."""
         global current_task, task_id
 
-        max_id = get("http://127.0.0.1:5000/api/task/0").json()['count']
+        max_id = get("https://mathbattlesite.herokuapp.com/api/task/0").json()['count']
 
         decided_tasks = USER['decided_tasks'].split('%')
         if (len(set(decided_tasks)) - 2) != max_id:
@@ -360,7 +360,7 @@ class MainWindow(QMainWindow):
             else:
                 task_id += 1
 
-            possible_task = get(f'http://127.0.0.1:5000/api/task/{task_id}')
+            possible_task = get(f'https://mathbattlesite.herokuapp.com/api/task/{task_id}')
 
             if possible_task:
                 current_task = possible_task.json()
@@ -373,14 +373,14 @@ class MainWindow(QMainWindow):
            то обновляется current_task, иначе происходит рекурсия."""
         global current_task, task_id
         decided_tasks = USER['decided_tasks'].split('%')
-        max_id = get('http://127.0.0.1:5000/api/task/0').json()['count']
+        max_id = get('https://mathbattlesite.herokuapp.com/api/task/0').json()['count']
 
         if (len(set(decided_tasks)) - 2) != max_id:
             if task_id == 1:
                 task_id = max_id
             else:
                 task_id -= 1
-            possible_task = get(f'http://127.0.0.1:5000/api/task/{task_id}')
+            possible_task = get(f'https://mathbattlesite.herokuapp.com/api/task/{task_id}')
             if possible_task:
                 current_task = possible_task.json()
                 self.post_task()
@@ -393,14 +393,14 @@ class MainWindow(QMainWindow):
                                      "Вы действительно хотите пожаловаться на задачу?",
                                      QMessageBox.Yes, QMessageBox.No)
         if valid == QMessageBox.Yes:
-            if str(current_task['id']) not in get(f'http://127.0.0.1:5000/api/users/{USER["login"]}').json()['reports'].split('%'):
-                put(f'http://127.0.0.1:5000/api/users/{USER["login"]}', data={'decided': 0, 'reported': current_task["id"], 'points': 0})
-                put(f'http://127.0.0.1:5000/api/task/{current_task["id"]}')
+            if str(current_task['id']) not in get(f'https://mathbattlesite.herokuapp.com/api/users/{USER["login"]}').json()['reports'].split('%'):
+                put(f'https://mathbattlesite.herokuapp.com/api/users/{USER["login"]}', data={'decided': 0, 'reported': current_task["id"], 'points': 0})
+                put(f'https://mathbattlesite.herokuapp.com/api/task/{current_task["id"]}')
             else:
                 valid = QMessageBox.warning(self, 'Предупреждение',
                                              "Вы уже отправили жалобу на задачу!",
                                              QMessageBox.Cancel)
-        USER = get(f'http://127.0.0.1:5000/api/users/{USER["login"]}').json()
+        USER = get(f'https://mathbattlesite.herokuapp.com/api/users/{USER["login"]}').json()
 
     def check_answer(self):
         """Функция проверяет ответ пользователя с правильным ответом. Если ответ правильный,
@@ -408,14 +408,14 @@ class MainWindow(QMainWindow):
            начисляются баллы."""
         global task_id, current_task
 
-        decided_tasks = get(f'http://127.0.0.1:5000/api/users/{USER["login"]}').json()['decided_tasks'].split('%')[2:]
+        decided_tasks = get(f'https://mathbattlesite.herokuapp.com/api/users/{USER["login"]}').json()['decided_tasks'].split('%')[2:]
         if str(current_task["user_login"]) != USER["login"]:
             if str(current_task["id"]) not in decided_tasks:
                 try:
                     if float(self.lineAnswer.text()) == float(current_task['answer']):
                         self.labelAnswStatus.setText('✓')
                         self.labelAnswStatus.setToolTip('Статус: зачтено')
-                        put(f"http://127.0.0.1:5000/api/users/{USER['login']}",
+                        put(f"https://mathbattlesite.herokuapp.com/api/users/{USER['login']}",
                             data={'decided': current_task['id'], 'reported': 0, 'points': current_task['points']})
                         self.update_profile()
                         self.update_decidedTasks(len(USER['decided_tasks'].split('%')) - 3, current_task)
@@ -447,7 +447,7 @@ class MainWindow(QMainWindow):
         self.labelID.setText(f'ID: {current_task["id"]}')
         self.ScoreLabel.setText(f'{current_task["points"]} баллов')
         self.warningLabel.setText('')
-        self.labelAuthor.setText('Автор: ' + get(f'http://127.0.0.1:5000/api/users/{current_task["user_login"]}').json()["nickname"])
+        self.labelAuthor.setText('Автор: ' + get(f'https://mathbattlesite.herokuapp.com/api/users/{current_task["user_login"]}').json()["nickname"])
         if str(current_task["id"]) in str(USER['decided_tasks']):
             self.lineAnswer.setText(current_task['answer'])
             self.labelAnswStatus.setText('✓')
@@ -477,8 +477,8 @@ class MainWindow(QMainWindow):
             self.error_label.setText('Все поля должны быть заполнены')
             return
 
-        post(f'http://127.0.0.1:5000/api/tasks/{USER["login"]}', json=dct)
-        lst_tasks = get(f'http://127.0.0.1:5000/api/tasks/{USER["login"]}').json()['tasks']
+        post(f'https://mathbattlesite.herokuapp.com/api/tasks/{USER["login"]}', json=dct)
+        lst_tasks = get(f'https://mathbattlesite.herokuapp.com/api/tasks/{USER["login"]}').json()['tasks']
         self.error_label.setStyleSheet('color: rgb(0, 200, 0);')
         self.error_label.setText(f'Задача успешно добавлена! ID задачи: {max([task["id"] for task in lst_tasks])}')
 
@@ -503,7 +503,7 @@ class DeveloperClient(QWidget):
         super().__init__()
         uic.loadUi('data/ui/developer_client.ui', self)
         self.settings = open('data/settings.txt', 'r').read().split('\n')
-        self.tasks_list = get("http://127.0.0.1:5000/api/tasks/'").json()['tasks']
+        self.tasks_list = get("https://mathbattlesite.herokuapp.com/api/tasks/'").json()['tasks']
         self.Nickname_small.setText(USER['nickname'])
 
         self.del_task_button.clicked.connect(self.del_task)
@@ -517,7 +517,7 @@ class DeveloperClient(QWidget):
         self.get_reported_tasks()
 
     def get_reported_tasks(self):
-        self.tasks_list = get("http://127.0.0.1:5000/api/tasks/'").json()['tasks']
+        self.tasks_list = get("https://mathbattlesite.herokuapp.com/api/tasks/'").json()['tasks']
         self.update_tasks()
         self.labelStatus.setText("Все задачи")
 
@@ -530,9 +530,9 @@ class DeveloperClient(QWidget):
                                          QMessageBox.Yes, QMessageBox.No)
             if valid == QMessageBox.Yes:
                 for i in rows:
-                    delete(f"http://127.0.0.1:5000/api/task/{int(self.tableWidget.item(i, 0).text())}")
+                    delete(f"https://mathbattlesite.herokuapp.com/api/task/{int(self.tableWidget.item(i, 0).text())}")
                 if len(self.labelStatus.text()) > 10:
-                    self.tasks_list = get(f"http://127.0.0.1:5000/api/tasks/{self.labelStatus.text().split()[-1]}").json()['tasks']
+                    self.tasks_list = get(f"https://mathbattlesite.herokuapp.com/api/tasks/{self.labelStatus.text().split()[-1]}").json()['tasks']
                     self.update_tasks()
                 else:
                     self.get_reported_tasks()
@@ -543,7 +543,7 @@ class DeveloperClient(QWidget):
     def open_user_tasks(self):
         row = list(set([i.row() for i in self.tableWidget.selectedItems()]))
         if len(row) == 1:
-            self.tasks_list = get(f"http://127.0.0.1:5000/api/tasks/{str(self.tableWidget.item(row[0], 4).text())}").json()['tasks']
+            self.tasks_list = get(f"https://mathbattlesite.herokuapp.com/api/tasks/{str(self.tableWidget.item(row[0], 4).text())}").json()['tasks']
             self.labelStatus.setText(f"Все задачи пользователя {str(self.tableWidget.item(row[0], 4).text())}")
             self.update_tasks()
         else:
@@ -557,8 +557,8 @@ class DeveloperClient(QWidget):
                                          f"Вы действительно хотите удалить пользователя {str(self.tableWidget.item(row[0], 4).text())}?",
                                          QMessageBox.Yes, QMessageBox.No)
             if valid == QMessageBox.Yes:
-                delete(f"http://127.0.0.1:5000/api/tasks/{str(self.tableWidget.item(row[0], 4).text())}")
-                delete(f"http://127.0.0.1:5000/api/users/{str(self.tableWidget.item(row[0], 4).text())}")
+                delete(f"https://mathbattlesite.herokuapp.com/api/tasks/{str(self.tableWidget.item(row[0], 4).text())}")
+                delete(f"https://mathbattlesite.herokuapp.com/api/users/{str(self.tableWidget.item(row[0], 4).text())}")
                 self.get_reported_tasks()
         else:
             warWindow = QMessageBox.warning(self, 'Предупреждение',
@@ -608,8 +608,8 @@ class DeveloperClient(QWidget):
             self.error_label.setText('Все поля должны быть заполнены')
             return
 
-        post(f'http://127.0.0.1:5000/api/tasks/{USER["login"]}', json=dct)
-        lst_tasks = get(f'http://127.0.0.1:5000/api/tasks/{USER["login"]}').json()['tasks']
+        post(f'https://mathbattlesite.herokuapp.com/api/tasks/{USER["login"]}', json=dct)
+        lst_tasks = get(f'https://mathbattlesite.herokuapp.com/api/tasks/{USER["login"]}').json()['tasks']
         self.error_label.setStyleSheet('color: rgb(0, 200, 0);')
         self.error_label.setText(f'Задача успешно добавлена! ID задачи: {max([task["id"] for task in lst_tasks])}')
 
